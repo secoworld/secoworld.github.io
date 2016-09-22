@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link rel="stylesheet" href="dist/css/bootstrap.css" />
 <title>主页</title>
 <style>
 #header{
@@ -10,20 +11,20 @@
 	text-align:center;
 	padding:5px;
 	}
-#left{
+#nav{
 	line-height:30px;
 	background-color:#eeeeee;
-	height:300px;
+	height:350px;
 	width:100px;
 	float:left;
 	padding:5px;
 	}
-#zhong{
+#secation{
 	width:500px;
 	float:left;
 	padding:10px;
 	}
-#booter{
+#footer{
 	background-color:#000;
 	color:white;
 	clear:both;
@@ -35,25 +36,30 @@
 </head>
 
 <body>
-	<div id="header">
-    <h2>Welcome!</h2>
+	<div class="container">
+        <div id="header">
+        <h2>Welcome!</h2>
+        </div>
     </div>
-    
-    <div id="left">
-    1.简介<br/>
-    2.兴趣<br/>
-    3.发展<br/>
+  	
+    <div class="container">
+        <div class="row">
+            <div id="nav">
+            1.简介<br/>
+            2.兴趣<br/>
+            3.发展<br/>
+            </div>
+            
+          
+            <div id="secation">
+            <h2>简介</h2><br/>
+            <p>该网站是作为兴趣爱好所建立起的。</p>
+            <p>每个人都可以把自己喜欢的东西上传到该网站，作为共享和学习之用。本网站是一个开放性的网站，所有的东西都可以自由的下载，同时每位成员在享受便利的同时，也应该将好的东西共享给他人</p>
+            <p>我们欢迎每一位成员的到来。</p>
+            </div>
+        </div>
     </div>
-    
-  
-    <div id="zhong">
-    <h2>简介</h2><br/>
-    <p>该网站是作为兴趣爱好所建立起的。</p>
-    <p>每个人都可以把自己喜欢的东西上传到该网站，作为共享和学习之用。本网站是一个开放性的网站，所有的东西都可以自由的下载，同时每位成员在享受便利的同时，也应该将好的东西共享给他人</p>
-    <p>我们欢迎每一位成员的到来。</p>
-    </div>
-    
-     <div id="booter">
+     <div id="footer">
     <h3>ltlogo.top  2016.09</h3>
     </div>
     
