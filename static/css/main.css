@@ -1,0 +1,13 @@
+
+body { 
+    padding-top: 70px; 
+}
+
+.index-head{
+    background-image: url(../img/bg-star.jpg);
+    color: white;
+    text-align: center;
+    background-attachment: fixed;
+    overflow: hidden;
+    background-size: 100%;
+}
