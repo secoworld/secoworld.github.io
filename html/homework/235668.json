@@ -1,6 +1,906 @@
 {
-  "msg": "exercise is not published",
-  "error_code": 20015,
-  "data": {},
-  "success": false
+  "msg": "",
+  "data": {
+    "max_retry": 1,
+    "description": "",
+    "show_answer": 2,
+    "show_answer_time": 1587312000,
+    "is_show_answer": false,
+    "problems": [
+      {
+        "max_retry": 1,
+        "index": 1,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "answerIndex": 2,
+          "Version": "59e6ee8f88ea44c8adc3ca4d2cff6597",
+          "ProblemID": 1669015,
+          "Type": "SingleChoice",
+          "max_retry": 1,
+          "LibraryName": "数据挖掘",
+          "score": 1.0,
+          "TemplateID": 457479,
+          "TypeText": "单选题",
+          "Body": "<p>与其他观测值的差别如此之大，以至于怀疑他是由不同的机制产生的，且是一个观测值的是（&nbsp; &nbsp; ）。</p>",
+          "review_detail": {},
+          "ProblemType": 1,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>边界点</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>质心</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>离群点</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>核心点</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Score": 1.0,
+          "HasRemark": false,
+          "template_id": 457479
+        },
+        "score": 1.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "1.00",
+          "my_count": 1,
+          "submit_time": "2020-04-11 22:55",
+          "my_answer": [
+            "C"
+          ]
+        },
+        "problem_id": 1669015
+      },
+      {
+        "max_retry": 1,
+        "index": 2,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "answerIndex": 0,
+          "Score": 1.0,
+          "ProblemID": 1669016,
+          "Type": "SingleChoice",
+          "max_retry": 1,
+          "LibraryName": "数据挖掘",
+          "score": 1.0,
+          "TemplateID": 457480,
+          "TypeText": "单选题",
+          "Body": "<p>检测一元正态分布中的离群点，属于异常检测中的基于（&nbsp; &nbsp; ）的离群点检测。</p>",
+          "review_detail": {},
+          "ProblemType": 1,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>统计方法</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>邻近度</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>&nbsp;密度</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>聚类技术</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Version": "4f6c42c0ba204342bfe2b12b20c145bc",
+          "HasRemark": false,
+          "template_id": 457480
+        },
+        "score": 1.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "1.00",
+          "my_count": 1,
+          "submit_time": "2020-04-13 19:06",
+          "my_answer": [
+            "A"
+          ]
+        },
+        "problem_id": 1669016
+      },
+      {
+        "max_retry": 1,
+        "index": 3,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "answerIndex": 2,
+          "Score": 1.0,
+          "ProblemID": 1669017,
+          "Type": "SingleChoice",
+          "max_retry": 1,
+          "LibraryName": "数据挖掘",
+          "score": 1.0,
+          "TemplateID": 457481,
+          "TypeText": "单选题",
+          "Body": "<p>一个对象的离群点得分是该对象周围密度的逆。这是基于（&nbsp; &nbsp; ）的离群点定义</p>",
+          "review_detail": {},
+          "ProblemType": 1,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>概率</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>邻近度</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>密度&nbsp;&nbsp;&nbsp;&nbsp;</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>聚类</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Version": "7666ae16dafa4da4a48d853cd0e86795",
+          "HasRemark": false,
+          "template_id": 457481
+        },
+        "score": 1.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "1.00",
+          "my_count": 1,
+          "submit_time": "2020-04-13 19:06",
+          "my_answer": [
+            "C"
+          ]
+        },
+        "problem_id": 1669017
+      },
+      {
+        "max_retry": 1,
+        "index": 4,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "answerIndex": 0,
+          "Score": 1.0,
+          "ProblemID": 1669018,
+          "Type": "SingleChoice",
+          "max_retry": 1,
+          "LibraryName": "数据挖掘",
+          "score": 1.0,
+          "TemplateID": 457482,
+          "TypeText": "单选题",
+          "Body": "<p>下列属于分类模型进行离群点检测的优势的是（&nbsp; &nbsp; ）。</p>",
+          "review_detail": {},
+          "ProblemType": 1,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>可以检测所有离群点</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>不再需要数据和正常数据的距离</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>建立在统计学原理上，易于理解</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>当数据充分，检验十分有效</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Version": "3c6f661652e64f41ab160c308d25f3a9",
+          "HasRemark": false,
+          "template_id": 457482
+        },
+        "score": 1.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "0.00",
+          "my_count": 1,
+          "submit_time": "2020-04-13 19:10",
+          "my_answer": [
+            "C"
+          ]
+        },
+        "problem_id": 1669018
+      },
+      {
+        "max_retry": 1,
+        "index": 5,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "answerIndex": 0,
+          "Score": 1.0,
+          "ProblemID": 1669019,
+          "Type": "SingleChoice",
+          "max_retry": 1,
+          "LibraryName": "数据挖掘",
+          "score": 1.0,
+          "TemplateID": 457483,
+          "TypeText": "单选题",
+          "Body": "<p>&nbsp;离群点又被称为异常值，它的本质是（&nbsp; &nbsp; ）。</p>",
+          "review_detail": {},
+          "ProblemType": 1,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>数据对象</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>特征</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>&nbsp;像素点</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>一个数值</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Version": "4e52c287bb9d4e129cdd60decbb596ea",
+          "HasRemark": false,
+          "template_id": 457483
+        },
+        "score": 1.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "1.00",
+          "my_count": 1,
+          "submit_time": "2020-04-13 19:11",
+          "my_answer": [
+            "A"
+          ]
+        },
+        "problem_id": 1669019
+      },
+      {
+        "max_retry": 1,
+        "index": 6,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "answerIndex": 1,
+          "Score": 1.0,
+          "ProblemID": 1669020,
+          "Type": "SingleChoice",
+          "max_retry": 1,
+          "LibraryName": "数据挖掘",
+          "score": 1.0,
+          "TemplateID": 457484,
+          "TypeText": "单选题",
+          "Body": "<p>&nbsp;离群点分为全局离群点，（&nbsp; &nbsp; ）。</p>",
+          "review_detail": {},
+          "ProblemType": 1,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>部分离群点和条件离群点</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>条件离群点和集体离群点</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>部分离群点和集体离群点</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>异常离群点和集体离群点</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Version": "bddc04be4da94ca5bc8373cfed603072",
+          "HasRemark": false,
+          "template_id": 457484
+        },
+        "score": 1.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "1.00",
+          "my_count": 1,
+          "submit_time": "2020-04-13 19:11",
+          "my_answer": [
+            "B"
+          ]
+        },
+        "problem_id": 1669020
+      },
+      {
+        "max_retry": 1,
+        "index": 7,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "answerIndex": 3,
+          "Score": 1.0,
+          "ProblemID": 1669021,
+          "Type": "SingleChoice",
+          "max_retry": 1,
+          "LibraryName": "数据挖掘",
+          "score": 1.0,
+          "TemplateID": 457486,
+          "TypeText": "单选题",
+          "Body": "<p>&nbsp;使用基于分类的方法进行离群点的识别在实际应用中用的并不是很多，这是因为这种方式（&nbsp; &nbsp; ）。</p>",
+          "review_detail": {},
+          "ProblemType": 1,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>分类准确率不高</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>训练代价高</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>训练数据难以获取</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>受训练数据的影响非常大</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Version": "e43fb83819ec4d1b82817edb2bf0e0d8",
+          "HasRemark": false,
+          "template_id": 457486
+        },
+        "score": 1.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "1.00",
+          "my_count": 1,
+          "submit_time": "2020-04-13 19:12",
+          "my_answer": [
+            "D"
+          ]
+        },
+        "problem_id": 1669021
+      },
+      {
+        "max_retry": 1,
+        "index": 8,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "answerIndex": 0,
+          "Version": "0a5c4bb917b9415196daf1b710f2036c",
+          "ProblemID": 1669022,
+          "Type": "SingleChoice",
+          "max_retry": 1,
+          "LibraryName": "数据挖掘",
+          "score": 1.0,
+          "TemplateID": 457487,
+          "TypeText": "单选题",
+          "Body": "<p>基于近邻的离群点检测方法包括基于距离的离群点检测和（&nbsp; &nbsp; ）。</p>",
+          "review_detail": {},
+          "ProblemType": 1,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>基于密度的离群点检测</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>基于位置的离群点检测</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>基于数据的离群点检测</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>基于概率的离群点检测</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Score": 1.0,
+          "HasRemark": false,
+          "template_id": 457487
+        },
+        "score": 1.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "1.00",
+          "my_count": 1,
+          "submit_time": "2020-04-13 19:12",
+          "my_answer": [
+            "A"
+          ]
+        },
+        "problem_id": 1669022
+      },
+      {
+        "max_retry": 1,
+        "index": 9,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "answerIndex": 3,
+          "Score": 1.0,
+          "ProblemID": 1669023,
+          "Type": "SingleChoice",
+          "max_retry": 1,
+          "LibraryName": "数据挖掘",
+          "score": 1.0,
+          "TemplateID": 457489,
+          "TypeText": "单选题",
+          "Body": "<p>离群点可以是合法的数据对象或者（&nbsp; &nbsp; ）。</p>",
+          "review_detail": {},
+          "ProblemType": 1,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>数据关系</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>特征</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>像素点</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>值</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Version": "ba8d2a0584084eacb64edcda5cc462d1",
+          "HasRemark": false,
+          "template_id": 457489
+        },
+        "score": 1.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "1.00",
+          "my_count": 1,
+          "submit_time": "2020-04-13 19:14",
+          "my_answer": [
+            "D"
+          ]
+        },
+        "problem_id": 1669023
+      },
+      {
+        "max_retry": 1,
+        "index": 10,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "answerIndex": 2,
+          "Score": 1.0,
+          "ProblemID": 1669024,
+          "Type": "SingleChoice",
+          "max_retry": 1,
+          "LibraryName": "数据挖掘",
+          "score": 1.0,
+          "TemplateID": 457490,
+          "TypeText": "单选题",
+          "Body": "<p>&nbsp;如果一个对象不强属于任何簇，那么该对象是（&nbsp; &nbsp; ）。</p>",
+          "review_detail": {},
+          "ProblemType": 1,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>基于距离的离群点</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>基于统计的离群点</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>基于聚类的离群点</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>基于密度的离群点</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Version": "221793a3900645ea991ea5f19a2032fa",
+          "HasRemark": false,
+          "template_id": 457490
+        },
+        "score": 1.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "1.00",
+          "my_count": 1,
+          "submit_time": "2020-04-13 19:14",
+          "my_answer": [
+            "C"
+          ]
+        },
+        "problem_id": 1669024
+      },
+      {
+        "max_retry": 1,
+        "index": 11,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "HalfScore": 0,
+          "Score": 2.0,
+          "ProblemID": 1669025,
+          "max_retry": 1,
+          "Type": "MultipleChoice",
+          "Body": "<p>下列属于离群点的检测方法的是（&nbsp; &nbsp; ）。</p>",
+          "LibraryName": "数据挖掘",
+          "score": 2.0,
+          "TemplateID": 457491,
+          "TypeText": "多选题",
+          "answerIndex": -1,
+          "review_detail": {},
+          "ProblemType": 2,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>基于近邻的离群点检测</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>&nbsp;基于聚类的离群点检测</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>基于应用价值的离群点检测</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>基于分类的离群点检测；</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Version": "fe8f7fc7b6d245e8982b99c07eec88d0",
+          "HasRemark": false,
+          "awardingRule": 1,
+          "template_id": 457491
+        },
+        "score": 2.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "2.00",
+          "my_count": 1,
+          "my_answers": {
+            "A": null,
+            "B": null,
+            "D": null
+          },
+          "submit_time": "2020-04-13 19:15"
+        },
+        "problem_id": 1669025
+      },
+      {
+        "max_retry": 1,
+        "index": 12,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "HalfScore": 0,
+          "Score": 2.0,
+          "ProblemID": 1669026,
+          "max_retry": 1,
+          "Type": "MultipleChoice",
+          "Body": "<p>下列属于基于统计的离群点检测流程的是（&nbsp; &nbsp; ）。</p>",
+          "LibraryName": "数据挖掘",
+          "score": 2.0,
+          "TemplateID": 457492,
+          "TypeText": "多选题",
+          "answerIndex": -1,
+          "review_detail": {},
+          "ProblemType": 2,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>设定数据集的分布模型</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>不和谐检验</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>发现离群点</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>验证离群点</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Version": "ac3ae00f5f674355b91cfc2562f85140",
+          "HasRemark": false,
+          "awardingRule": 1,
+          "template_id": 457492
+        },
+        "score": 2.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "2.00",
+          "my_count": 1,
+          "my_answers": {
+            "A": null,
+            "C": null,
+            "B": null
+          },
+          "submit_time": "2020-04-13 19:15"
+        },
+        "problem_id": 1669026
+      },
+      {
+        "max_retry": 1,
+        "index": 13,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "HalfScore": 0,
+          "Score": 2.0,
+          "ProblemID": 1669027,
+          "max_retry": 1,
+          "Type": "MultipleChoice",
+          "Body": "<p>下列属于离群点检测在数据挖掘中的应用的是（&nbsp; &nbsp; ）。</p>",
+          "LibraryName": "数据挖掘",
+          "score": 2.0,
+          "TemplateID": 457493,
+          "TypeText": "多选题",
+          "answerIndex": -1,
+          "review_detail": {},
+          "ProblemType": 2,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>市场营销管理</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>网络监视异常</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>工业损毁检测</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>网络入侵检测</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Version": "cd6c7b83a47d459182b321da93393cad",
+          "HasRemark": false,
+          "awardingRule": 1,
+          "template_id": 457493
+        },
+        "score": 2.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "2.00",
+          "my_count": 1,
+          "my_answers": {
+            "C": null,
+            "B": null,
+            "D": null
+          },
+          "submit_time": "2020-04-13 19:20"
+        },
+        "problem_id": 1669027
+      },
+      {
+        "max_retry": 1,
+        "index": 14,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "HalfScore": 0,
+          "Score": 2.0,
+          "ProblemID": 1669028,
+          "max_retry": 1,
+          "Type": "MultipleChoice",
+          "Body": "<p>&nbsp;下列属于离群点产生的原因的是（&nbsp; &nbsp; ）。</p>",
+          "LibraryName": "数据挖掘",
+          "score": 2.0,
+          "TemplateID": 457494,
+          "TypeText": "多选题",
+          "answerIndex": -1,
+          "review_detail": {},
+          "ProblemType": 2,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>由于数据本身的可变性所致</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>由于计算的误差或者操作的错误</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>由于噪声所致</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>由于操作人员随意添加所致</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Version": "a645893e5480411a8109c4f88397ce1b",
+          "HasRemark": false,
+          "awardingRule": 1,
+          "template_id": 457494
+        },
+        "score": 2.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "0.00",
+          "my_count": 1,
+          "my_answers": {
+            "A": null,
+            "B": null
+          },
+          "submit_time": "2020-04-13 19:21"
+        },
+        "problem_id": 1669028
+      },
+      {
+        "max_retry": 1,
+        "index": 15,
+        "review_detail": {},
+        "content": {
+          "library_id": 4474,
+          "HalfScore": 0,
+          "Score": 2.0,
+          "ProblemID": 1669029,
+          "max_retry": 1,
+          "Type": "MultipleChoice",
+          "Body": "<p>下列关于离群点与噪声的说法，错误的是（&nbsp; &nbsp; ）。</p>",
+          "LibraryName": "数据挖掘",
+          "score": 2.0,
+          "TemplateID": 457495,
+          "TypeText": "多选题",
+          "answerIndex": -1,
+          "review_detail": {},
+          "ProblemType": 2,
+          "difficulty": 1,
+          "LibraryID": 4474,
+          "data": {},
+          "Options": [
+            {
+              "value": "<p>观测值即是真实数据与噪声无关</p>",
+              "key": "A"
+            },
+            {
+              "value": "<p>噪声指被观测数据的随机误差</p>",
+              "key": "B"
+            },
+            {
+              "value": "<p>噪声是异常分析的研究对象</p>",
+              "key": "C"
+            },
+            {
+              "value": "<p>噪声数据是一种离群点</p>",
+              "key": "D"
+            }
+          ],
+          "isEdit": false,
+          "Version": "6052705e16db4159a05b434280b26b49",
+          "HasRemark": false,
+          "awardingRule": 1,
+          "template_id": 457495
+        },
+        "score": 2.0,
+        "user": {
+          "count": 1,
+          "remark": "",
+          "is_show_answer": false,
+          "my_score": "0.00",
+          "my_count": 1,
+          "my_answers": {
+            "A": null,
+            "C": null,
+            "B": null,
+            "D": null
+          },
+          "submit_time": "2020-04-13 19:31"
+        },
+        "problem_id": 1669029
+      }
+    ],
+    "answer_count": 15,
+    "exercise_id": 235668,
+    "name": "第9章 作业"
+  },
+  "success": true
 }
