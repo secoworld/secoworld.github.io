@@ -160,7 +160,7 @@
         }
         body.append(html_answer);
         var item_btn_group = $("<ul></ul>").addClass("list-group answer_button").append($("<button></button>").addClass("btn btn-success item_showAnswer").text("显示答案"))
-        .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案"));
+        .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案").attr("style", "margin-left: 5px;"));
         body.append(item_btn_group);
         parent.append(body).appendTo($("#show_body"));
         
