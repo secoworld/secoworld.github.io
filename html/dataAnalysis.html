@@ -24,6 +24,10 @@
 <div class="container">
     <h1 class="text-center">数据挖掘作业</h1>
     <h3 class="text-center"><a href="https://secoworld.github.io/">首页</a> <a href="https://github.com/secoworld/dataAnylsis_homework">github地址</a> </h3>
+    <div>
+        <button class="btn btn-success" id="btn_answer_showAll">显示所有答案</button>
+        <button class="btn btn-danger" id="btn_answer_hideAll">隐藏所有答案</button>
+    </div>
     <div class="row">
         <div class="col-md-12" id="show_body">
             
@@ -33,6 +37,9 @@
 
 <script>
 // <!-- 读取json文件并将其显示在html文档中;  -->
+
+    // 设置全局变量为是否显示答案
+    var answer_show_flag = true; 
 
     $(document).ready(function () {
         $.ajaxSettings.async = false;  //ajax同步执行，防止文件的顺序被破坏
@@ -93,22 +100,26 @@
         parent.append(head);
         body.append(question);
         body.append(html_options);
+        var html_answer = $("<ul></ul>").addClass("list-group answer_show");
 
         if(problem.user.hasOwnProperty('answer')){
             var answer = problem.user.answer;
-            var html_answer = $("<ul></ul>").addClass("list-group").append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+answer[0]));
+            html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+answer[0]));
 
         }else{
             var score = parseFloat(problem.score);
             var my_score = parseFloat(problem.user.my_score)
             var my_answer = problem.user.my_answer;
             if(score == my_score){
-                var html_answer = $("<ul></ul>").addClass("list-group").append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+my_answer[0]));
+                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+my_answer[0]));
             }else{
-                var html_answer = $("<ul></ul>").addClass("list-group").append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案] 暂时没有答案"));
+                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案] 暂时没有答案"));
             }
         }
           body.append(html_answer);
+          var item_btn_group = $("<ul></ul>").addClass("list-group answer_button").append($("<button></button>").addClass("btn btn-success item_showAnswer").text("显示答案"))
+        .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案").attr("style", "margin-left: 5px;"));
+        body.append(item_btn_group);
 
         parent.append(body).appendTo($("#show_body"));
 
@@ -119,7 +130,7 @@
         var options = problem.content.Options;
         var type = problem.content.TypeText;
 
-        var html_options = $("<ul></ul>").addClass("list-group");
+        var html_options = $("<ul></ul>").addClass("list-group answer_show");
         for(var i=0; i<options.length; i++){
             var option = options[i];
             $("<li></li>").addClass("list-group-item").html(""+option.key +". "+ option.value).appendTo(html_options);
@@ -132,21 +143,25 @@
         parent.append(head);
         body.append(question);
         body.append(html_options);
+        var html_answer = $("<ul></ul>").addClass("list-group answer_show")
 
         if(problem.user.hasOwnProperty('answer')){
             var answer = problem.user.answer;
-            var html_answer = $("<ul></ul>").addClass("list-group").append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+answer.join(",")));
+            html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+answer.join(",")));
         }else{
             var score = parseFloat(problem.score);
             var my_score = parseFloat(problem.user.my_score)
             var my_answer = problem.user.my_answers;
             if(score == my_score){
-                var html_answer = $("<ul></ul>").addClass("list-group").append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+ Object.keys(my_answer).join(",")));
+                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+ Object.keys(my_answer).join(",")));
             }else{
-                var html_answer = $("<ul></ul>").addClass("list-group").append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案]: 暂时不存在"));
+                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案]: 暂时不存在"));
             }
         }
         body.append(html_answer);
+        var item_btn_group = $("<ul></ul>").addClass("list-group answer_button").append($("<button></button>").addClass("btn btn-success item_showAnswer").text("显示答案"))
+        .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案"));
+        body.append(item_btn_group);
         parent.append(body).appendTo($("#show_body"));
         
     }
@@ -162,6 +177,7 @@
         var head = $("<div></div>").addClass("panel-heading").text((index+1)+ "、 ").append(html_type);
         parent.append(head);
         body.append(question);
+        var html_answer = $("<ul></ul>").addClass("list-group answer_show");
 
         if(problem.user.hasOwnProperty('answers')){
             var answer = problem.user.answers;
@@ -169,7 +185,8 @@
             for(var an in answer){
                 html_an.append(answer[an].join(",")).append(";&nbsp;&nbsp;");
             }
-            var html_answer = $("<ul></ul>").addClass("list-group").append(html_an);
+      
+            html_answer.append(html_an);
         }else{
             var score = parseFloat(problem.score);
             var my_score = parseFloat(problem.user.my_score)
@@ -179,12 +196,16 @@
                 for(var an in my_answer){
                     html_an.append(my_answer[an]['answer']).append(";&nbsp;&nbsp;");
                 }
-                var html_answer = $("<ul></ul>").addClass("list-group").append(html_an);
+                html_answer.append(html_an);
             }else{
-                var html_answer = $("<ul></ul>").addClass("list-group").append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案]: 暂时不存在"));
+                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案]: 暂时不存在"));
             }
         }
         body.append(html_answer);
+
+        var item_btn_group = $("<ul></ul>").addClass("list-group answer_button").append($("<button></button>").addClass("btn btn-success item_showAnswer").text("显示答案"))
+        .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案").attr("style", "margin-left: 5px;"));
+        body.append(item_btn_group);
         parent.append(body).appendTo($("#show_body"));
     }
     
@@ -201,23 +222,75 @@
         var head = $("<div></div>").addClass("panel-heading").text((index+1)+ "、 ").append(html_type);
         parent.append(head);
         body.append(question);
+        var html_answer = $("<ul></ul>").addClass("list-group answer_show");
 
         if(problem.user.hasOwnProperty('answer')){
             var answer = problem.user.answer;
-            var html_answer = $("<ul></ul>").addClass("list-group").append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+(answer[0] == "true"?"对":"错")));
+            html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+(answer[0] == "true"?"对":"错")));
         }else{
             var score = parseFloat(problem.score);
             var my_score = parseFloat(problem.user.my_score)
             var my_answer = problem.user.my_answer;
             if(score == my_score){
-                var html_answer = $("<ul></ul>").addClass("list-group").append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+(my_answer[0] == "true"?"对":"错")));
+                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+(my_answer[0] == "true"?"对":"错")));
             }else{
-                var html_answer = $("<ul></ul>").addClass("list-group").append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案]: 暂时不存在"));
+                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案]: 暂时不存在"));
             }
         }
         body.append(html_answer);
+
+        var item_btn_group = $("<ul></ul>").addClass("list-group answer_button").append($("<button></button>").addClass("btn btn-success item_showAnswer").text("显示答案"))
+        .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案").attr("style", "margin-left: 5px;"));
+        body.append(item_btn_group);
+
         parent.append(body).appendTo($("#show_body"));
     }
+
+    $(document).ready(function(){
+        if(answer_show_flag){
+            $(".answer_button").each(function (index, item) {
+                $(item).hide();
+              });
+            $(".answer_show").each(function (index, item) {
+            $(item).show();
+            });
+        }else{
+            $(".answer_button").each(function (index, item) {
+                $(item).show();
+              });
+            $(".answer_show").each(function (index, item) {
+                $(item).hide();
+              });
+        }
+
+
+        $("#btn_answer_showAll").click(function(){
+            $(".answer_button").each(function (index, item) {
+                $(item).hide();
+              });
+            $(".answer_show").each(function (index, item) {
+            $(item).show();
+            });
+        });
+
+        $("#btn_answer_hideAll").click(function(){
+            $(".answer_button").each(function (index, item) {
+                $(item).show();
+              });
+            $(".answer_show").each(function (index, item) {
+                $(item).hide();
+              });
+        });
+
+        $("#show_body").on("click", ".item_showAnswer", function(){
+            $(".answer_show",$(this).parent().parent()).show();
+        })
+
+        $("#show_body").on("click", ".item_hideAnswer", function(){
+            $(".answer_show",$(this).parent().parent()).hide();
+        })
+
+    })
 </script>
 
 
