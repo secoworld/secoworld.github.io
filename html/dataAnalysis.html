@@ -130,7 +130,7 @@
         var options = problem.content.Options;
         var type = problem.content.TypeText;
 
-        var html_options = $("<ul></ul>").addClass("list-group answer_show");
+        var html_options = $("<ul></ul>").addClass("list-group");
         for(var i=0; i<options.length; i++){
             var option = options[i];
             $("<li></li>").addClass("list-group-item").html(""+option.key +". "+ option.value).appendTo(html_options);
