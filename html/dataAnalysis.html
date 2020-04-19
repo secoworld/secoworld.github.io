@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>数据挖掘作业</title>
@@ -7,292 +8,352 @@
     <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <style>
-        .list-group-item p{
-            display: inline-block;
-        }
-        .panel-body p{
+        .list-group-item p {
             display: inline-block;
         }
 
-        .panel-body img{
+        .panel-body p {
+            display: inline-block;
+        }
+
+        .panel-body img {
             max-width: 100%;
+        }
+
+        .right_btn {
+            height: 50px;
+            width: 50px;
+            margin-top: 10px;
+            font-size: 30px;
+            border: 1px solid #666;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px #333;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .right_btn span {
+            text-align: center;
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h1 class="text-center">数据挖掘作业</h1>
-    <h3 class="text-center"><a href="https://secoworld.github.io/">首页</a> <a href="https://github.com/secoworld/dataAnylsis_homework">github地址</a> </h3>
-    <div>
-        <button class="btn btn-success" id="btn_answer_showAll">显示所有答案</button>
-        <button class="btn btn-danger" id="btn_answer_hideAll">隐藏所有答案</button>
-    </div>
-    <div class="row">
-        <div class="col-md-12" id="show_body">
-            
+    <div class="container">
+        <h1 class="text-center">数据挖掘作业</h1>
+        <h3 class="text-center"><a href="https://secoworld.github.io/">首页</a> <a
+                href="https://github.com/secoworld/dataAnylsis_homework">github地址</a> </h3>
+        <div style="position: fixed; right: 50px; width: 100px; top: 100px;">
+            <button class="btn btn-success" id="btn_answer_showAll" style="margin-top: 10px;">显示所有答案</button>
+            <button class="btn btn-danger" id="btn_answer_hideAll" style="margin-top: 10px;">隐藏所有答案</button>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="show_body">
+
+            </div>
         </div>
     </div>
-</div>
+    <div id="right_btnGroup" style="position: fixed; right: 20px; bottom: 100px;">
+        <div id="go_top" class="right_btn" title="跳转到顶部">
+            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+        </div>
+        <div id="go_down" class="right_btn" title="跳转到底部">
+            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+        </div>
+    </div>
 
-<script>
-// <!-- 读取json文件并将其显示在html文档中;  -->
+    <script>
+        // <!-- 读取json文件并将其显示在html文档中;  -->
 
-    // 设置全局变量为是否显示答案
-    var answer_show_flag = true; 
+        // 设置全局变量为是否显示答案
+        var answer_show_flag = true;
 
-    $(document).ready(function () {
-        $.ajaxSettings.async = false;  //ajax同步执行，防止文件的顺序被破坏
-        for(var i=0; i<9; i++){
-            var path = "./homework/23566"+i+".json";
-            get_json_file(path)
-        }
-
-    });
-
-
-    function get_json_file(path) {
-        $.getJSON(path, function (data) {
-            if(data.success){
-                read_problems(data)
+        $(document).ready(function () {
+            $.ajaxSettings.async = false;  //ajax同步执行，防止文件的顺序被破坏
+            for (var i = 0; i < 9; i++) {
+                var path = "./homework/23566" + i + ".json";
+                get_json_file(path)
             }
-        })
-    }
-    
-    function read_problems(data){
-         var problems = data.data.problems;
-        // console.log(problems);
-        console.log(data.data.name)
-        $("#show_body").append($("<h2></h2>").addClass("text-center").text(data.data.name));
-        for(var i =0; i<problems.length; i++){
-            var problem = problems[i];
-            // console.log(problem)
-            var type = problem.content.Type;
-            switch (type) {
-                case 'SingleChoice': SingleChoice(i, problem); break;
-                case 'MultipleChoice': MultiChoice(i, problem); break;
-                case 'FillBlank': FillBlank(i, problem); break;
-                case 'Judgement': Judgement(i, problem); break;
-                default:
-                    console.log("这个problem类型错误！"+ problem);
-                    break;
-            }
-        }
-    }
-    
-    function SingleChoice(index, problem){
-        var question = problem.content.Body;
-        var type = problem.content.TypeText;
-        var options = problem.content.Options;
+
+        });
 
 
-        var html_options = $("<ul></ul>").addClass("list-group");
-        for(var i=0; i<options.length; i++){
-            var option = options[i];
-            $("<li></li>").addClass("list-group-item").html(""+option.key +". "+ option.value).appendTo(html_options);
-        }
-
-        var parent = $("<div></div>").addClass("panel panel-success");
-        var body = $("<div></div>").addClass("panel-body");
-        var html_type = $("<span></span>").addClass("label label-primary").text(type) ;
-
-        var head = $("<div></div>").addClass("panel-heading").text((index+1)+ "、 ").append(html_type);
-        parent.append(head);
-        body.append(question);
-        body.append(html_options);
-        var html_answer = $("<ul></ul>").addClass("list-group answer_show");
-
-        if(problem.user.hasOwnProperty('answer')){
-            var answer = problem.user.answer;
-            html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+answer[0]));
-
-        }else{
-            var score = parseFloat(problem.score);
-            var my_score = parseFloat(problem.user.my_score)
-            var my_answer = problem.user.my_answer;
-            if(score == my_score){
-                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+my_answer[0]));
-            }else{
-                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案] 暂时没有答案"));
-            }
-        }
-          body.append(html_answer);
-          var item_btn_group = $("<ul></ul>").addClass("list-group answer_button").append($("<button></button>").addClass("btn btn-success item_showAnswer").text("显示答案"))
-        .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案").attr("style", "margin-left: 5px;"));
-        body.append(item_btn_group);
-
-        parent.append(body).appendTo($("#show_body"));
-
-    }
-    
-    function MultiChoice(index, problem) {
-        var question = problem.content.Body;
-        var options = problem.content.Options;
-        var type = problem.content.TypeText;
-
-        var html_options = $("<ul></ul>").addClass("list-group");
-        for(var i=0; i<options.length; i++){
-            var option = options[i];
-            $("<li></li>").addClass("list-group-item").html(""+option.key +". "+ option.value).appendTo(html_options);
-        }
-
-        var parent = $("<div></div>").addClass("panel panel-info");
-        var body = $("<div></div>").addClass("panel-body");
-        var html_type = $("<span></span>").addClass("label label-success").text(type) ;
-        var head = $("<div></div>").addClass("panel-heading").text((index+1)+ "、 ").append(html_type);
-        parent.append(head);
-        body.append(question);
-        body.append(html_options);
-        var html_answer = $("<ul></ul>").addClass("list-group answer_show")
-
-        if(problem.user.hasOwnProperty('answer')){
-            var answer = problem.user.answer;
-            html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+answer.join(",")));
-        }else{
-            var score = parseFloat(problem.score);
-            var my_score = parseFloat(problem.user.my_score)
-            var my_answer = problem.user.my_answers;
-            if(score == my_score){
-                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+ Object.keys(my_answer).join(",")));
-            }else{
-                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案]: 暂时不存在"));
-            }
-        }
-        body.append(html_answer);
-        var item_btn_group = $("<ul></ul>").addClass("list-group answer_button").append($("<button></button>").addClass("btn btn-success item_showAnswer").text("显示答案"))
-        .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案").attr("style", "margin-left: 5px;"));
-        body.append(item_btn_group);
-        parent.append(body).appendTo($("#show_body"));
-        
-    }
-    
-    function FillBlank(index, problem) {
-        var question = problem.content.Body;
-        var type = problem.content.TypeText;
-
-        var parent = $("<div></div>").addClass("panel panel-primary");
-        var body = $("<div></div>").addClass("panel-body");
-        var html_type = $("<span></span>").addClass("label label-warning").text(type) ;
-
-        var head = $("<div></div>").addClass("panel-heading").text((index+1)+ "、 ").append(html_type);
-        parent.append(head);
-        body.append(question);
-        var html_answer = $("<ul></ul>").addClass("list-group answer_show");
-
-        if(problem.user.hasOwnProperty('answers')){
-            var answer = problem.user.answers;
-            var html_an = $("<li></li>").addClass("list-group-item list-group-item-success").text("[答案]");
-            for(var an in answer){
-                html_an.append(answer[an].join(",")).append(";&nbsp;&nbsp;");
-            }
-      
-            html_answer.append(html_an);
-        }else{
-            var score = parseFloat(problem.score);
-            var my_score = parseFloat(problem.user.my_score)
-            var my_answer = problem.user.my_answers;
-            if(score == my_score){
-                var html_an = $("<li></li>").addClass("list-group-item list-group-item-success").text("[答案]");
-                for(var an in my_answer){
-                    html_an.append(my_answer[an]['answer']).append(";&nbsp;&nbsp;");
+        function get_json_file(path) {
+            $.getJSON(path, function (data) {
+                if (data.success) {
+                    read_problems(data)
                 }
+            })
+        }
+
+        // 判断问题的类型
+        function read_problems(data) {
+            var problems = data.data.problems;
+            // console.log(problems);
+            console.log(data.data.name)
+            $("#show_body").append($("<h2></h2>").addClass("text-center").text(data.data.name));
+            for (var i = 0; i < problems.length; i++) {
+                var problem = problems[i];
+                // console.log(problem)
+                var type = problem.content.Type;
+                switch (type) {
+                    case 'SingleChoice': SingleChoice(i, problem); break;
+                    case 'MultipleChoice': MultiChoice(i, problem); break;
+                    case 'FillBlank': FillBlank(i, problem); break;
+                    case 'Judgement': Judgement(i, problem); break;
+                    default:
+                        console.log("这个problem类型错误！" + problem);
+                        break;
+                }
+            }
+        }
+
+        // 单选
+        function SingleChoice(index, problem) {
+            var question = problem.content.Body;
+            var type = problem.content.TypeText;
+            var options = problem.content.Options;
+
+
+            var html_options = $("<ul></ul>").addClass("list-group");
+            for (var i = 0; i < options.length; i++) {
+                var option = options[i];
+                $("<li></li>").addClass("list-group-item").html("" + option.key + ". " + option.value).appendTo(html_options);
+            }
+
+            var parent = $("<div></div>").addClass("panel panel-success");
+            var body = $("<div></div>").addClass("panel-body");
+            var html_type = $("<span></span>").addClass("label label-primary").text(type);
+
+            var head = $("<div></div>").addClass("panel-heading").text((index + 1) + "、 ").append(html_type);
+            parent.append(head);
+            body.append(question);
+            body.append(html_options);
+            var html_answer = $("<ul></ul>").addClass("list-group answer_show");
+
+            if (problem.user.hasOwnProperty('answer')) {
+                var answer = problem.user.answer;
+                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] " + answer[0]));
+
+            } else {
+                var score = parseFloat(problem.score);
+                var my_score = parseFloat(problem.user.my_score)
+                var my_answer = problem.user.my_answer;
+                if (score == my_score) {
+                    html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] " + my_answer[0]));
+                } else {
+                    html_answer.append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案] 暂时没有答案"));
+                }
+            }
+            body.append(html_answer);
+            var item_btn_group = $("<ul></ul>").addClass("list-group answer_button").append($("<button></button>").addClass("btn btn-success item_showAnswer").text("显示答案"))
+                .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案").attr("style", "margin-left: 5px;"));
+            body.append(item_btn_group);
+
+            parent.append(body).appendTo($("#show_body"));
+
+        }
+
+        // 多选
+        function MultiChoice(index, problem) {
+            var question = problem.content.Body;
+            var options = problem.content.Options;
+            var type = problem.content.TypeText;
+
+            var html_options = $("<ul></ul>").addClass("list-group");
+            for (var i = 0; i < options.length; i++) {
+                var option = options[i];
+                $("<li></li>").addClass("list-group-item").html("" + option.key + ". " + option.value).appendTo(html_options);
+            }
+
+            var parent = $("<div></div>").addClass("panel panel-info");
+            var body = $("<div></div>").addClass("panel-body");
+            var html_type = $("<span></span>").addClass("label label-success").text(type);
+            var head = $("<div></div>").addClass("panel-heading").text((index + 1) + "、 ").append(html_type);
+            parent.append(head);
+            body.append(question);
+            body.append(html_options);
+            var html_answer = $("<ul></ul>").addClass("list-group answer_show")
+
+            if (problem.user.hasOwnProperty('answer')) {
+                var answer = problem.user.answer;
+                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] " + answer.join(",")));
+            } else {
+                var score = parseFloat(problem.score);
+                var my_score = parseFloat(problem.user.my_score)
+                var my_answer = problem.user.my_answers;
+                if (score == my_score) {
+                    html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] " + Object.keys(my_answer).join(",")));
+                } else {
+                    html_answer.append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案]: 暂时不存在"));
+                }
+            }
+            body.append(html_answer);
+            var item_btn_group = $("<ul></ul>").addClass("list-group answer_button").append($("<button></button>").addClass("btn btn-success item_showAnswer").text("显示答案"))
+                .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案").attr("style", "margin-left: 5px;"));
+            body.append(item_btn_group);
+            parent.append(body).appendTo($("#show_body"));
+
+        }
+
+        // 填空
+        function FillBlank(index, problem) {
+            var question = problem.content.Body;
+            var type = problem.content.TypeText;
+
+            var parent = $("<div></div>").addClass("panel panel-primary");
+            var body = $("<div></div>").addClass("panel-body");
+            var html_type = $("<span></span>").addClass("label label-warning").text(type);
+
+            var head = $("<div></div>").addClass("panel-heading").text((index + 1) + "、 ").append(html_type);
+            parent.append(head);
+            body.append(question);
+            var html_answer = $("<ul></ul>").addClass("list-group answer_show");
+
+            if (problem.user.hasOwnProperty('answers')) {
+                var answer = problem.user.answers;
+                var html_an = $("<li></li>").addClass("list-group-item list-group-item-success").text("[答案]");
+                for (var an in answer) {
+                    html_an.append(answer[an].join(",")).append(";&nbsp;&nbsp;");
+                }
+
                 html_answer.append(html_an);
-            }else{
-                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案]: 暂时不存在"));
+            } else {
+                var score = parseFloat(problem.score);
+                var my_score = parseFloat(problem.user.my_score)
+                var my_answer = problem.user.my_answers;
+                if (score == my_score) {
+                    var html_an = $("<li></li>").addClass("list-group-item list-group-item-success").text("[答案]");
+                    for (var an in my_answer) {
+                        html_an.append(my_answer[an]['answer']).append(";&nbsp;&nbsp;");
+                    }
+                    html_answer.append(html_an);
+                } else {
+                    html_answer.append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案]: 暂时不存在"));
+                }
             }
+            body.append(html_answer);
+
+            var item_btn_group = $("<ul></ul>").addClass("list-group answer_button").append($("<button></button>").addClass("btn btn-success item_showAnswer").text("显示答案"))
+                .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案").attr("style", "margin-left: 5px;"));
+            body.append(item_btn_group);
+            parent.append(body).appendTo($("#show_body"));
         }
-        body.append(html_answer);
 
-        var item_btn_group = $("<ul></ul>").addClass("list-group answer_button").append($("<button></button>").addClass("btn btn-success item_showAnswer").text("显示答案"))
-        .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案").attr("style", "margin-left: 5px;"));
-        body.append(item_btn_group);
-        parent.append(body).appendTo($("#show_body"));
-    }
-    
-    function Judgement(index, problem) {
-        var question = problem.content.Body;
-        var options = problem.content.Options;
+        // 判断
+        function Judgement(index, problem) {
+            var question = problem.content.Body;
+            var options = problem.content.Options;
 
-        var type = problem.content.TypeText;
+            var type = problem.content.TypeText;
 
-        var parent = $("<div></div>").addClass("panel panel-default");
-        var body = $("<div></div>").addClass("panel-body");
-        var html_type = $("<span></span>").addClass("label label-info").text(type) ;
-        // var html_an = $("<li></li>").addClass("list-group-item list-group-item-success").text("[答案]");
-        var head = $("<div></div>").addClass("panel-heading").text((index+1)+ "、 ").append(html_type);
-        parent.append(head);
-        body.append(question);
-        var html_answer = $("<ul></ul>").addClass("list-group answer_show");
+            var parent = $("<div></div>").addClass("panel panel-default");
+            var body = $("<div></div>").addClass("panel-body");
+            var html_type = $("<span></span>").addClass("label label-info").text(type);
+            // var html_an = $("<li></li>").addClass("list-group-item list-group-item-success").text("[答案]");
+            var head = $("<div></div>").addClass("panel-heading").text((index + 1) + "、 ").append(html_type);
+            parent.append(head);
+            body.append(question);
+            var html_answer = $("<ul></ul>").addClass("list-group answer_show");
 
-        if(problem.user.hasOwnProperty('answer')){
-            var answer = problem.user.answer;
-            html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+(answer[0] == "true"?"对":"错")));
-        }else{
-            var score = parseFloat(problem.score);
-            var my_score = parseFloat(problem.user.my_score)
-            var my_answer = problem.user.my_answer;
-            if(score == my_score){
-                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] "+(my_answer[0] == "true"?"对":"错")));
-            }else{
-                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案]: 暂时不存在"));
+            if (problem.user.hasOwnProperty('answer')) {
+                var answer = problem.user.answer;
+                html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] " + (answer[0] == "true" ? "对" : "错")));
+            } else {
+                var score = parseFloat(problem.score);
+                var my_score = parseFloat(problem.user.my_score)
+                var my_answer = problem.user.my_answer;
+                if (score == my_score) {
+                    html_answer.append($("<li></li>").addClass("list-group-item list-group-item-success").text("[答案] " + (my_answer[0] == "true" ? "对" : "错")));
+                } else {
+                    html_answer.append($("<li></li>").addClass("list-group-item list-group-item-danger").text("[答案]: 暂时不存在"));
+                }
             }
-        }
-        body.append(html_answer);
+            body.append(html_answer);
 
-        var item_btn_group = $("<ul></ul>").addClass("list-group answer_button").append($("<button></button>").addClass("btn btn-success item_showAnswer").text("显示答案"))
-        .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案").attr("style", "margin-left: 5px;"));
-        body.append(item_btn_group);
+            var item_btn_group = $("<ul></ul>").addClass("list-group answer_button").append($("<button></button>").addClass("btn btn-success item_showAnswer").text("显示答案"))
+                .append($("<button></button>").addClass("btn btn-danger item_hideAnswer").text("隐藏答案").attr("style", "margin-left: 5px;"));
+            body.append(item_btn_group);
 
-        parent.append(body).appendTo($("#show_body"));
-    }
-
-    $(document).ready(function(){
-        if(answer_show_flag){
-            $(".answer_button").each(function (index, item) {
-                $(item).hide();
-              });
-            $(".answer_show").each(function (index, item) {
-            $(item).show();
-            });
-        }else{
-            $(".answer_button").each(function (index, item) {
-                $(item).show();
-              });
-            $(".answer_show").each(function (index, item) {
-                $(item).hide();
-              });
+            parent.append(body).appendTo($("#show_body"));
         }
 
+        $(document).ready(function () {
+            if (answer_show_flag) {
+                $(".answer_button").each(function (index, item) {
+                    $(item).hide();
+                });
+                $(".answer_show").each(function (index, item) {
+                    $(item).show();
+                });
+            } else {
+                $(".answer_button").each(function (index, item) {
+                    $(item).show();
+                });
+                $(".answer_show").each(function (index, item) {
+                    $(item).hide();
+                });
+            }
 
-        $("#btn_answer_showAll").click(function(){
-            $(".answer_button").each(function (index, item) {
-                $(item).hide();
-              });
-            $(".answer_show").each(function (index, item) {
-            $(item).show();
+            // 显示所有的问题答案
+            $("#btn_answer_showAll").click(function () {
+                $(".answer_button").each(function (index, item) {
+                    $(item).hide();
+                });
+                $(".answer_show").each(function (index, item) {
+                    $(item).show();
+                });
             });
-        });
 
-        $("#btn_answer_hideAll").click(function(){
-            $(".answer_button").each(function (index, item) {
-                $(item).show();
-              });
-            $(".answer_show").each(function (index, item) {
-                $(item).hide();
-              });
-        });
+            // 隐藏所有问题的答案
+            $("#btn_answer_hideAll").click(function () {
+                $(".answer_button").each(function (index, item) {
+                    $(item).show();
+                });
+                $(".answer_show").each(function (index, item) {
+                    $(item).hide();
+                });
+            });
 
-        $("#show_body").on("click", ".item_showAnswer", function(){
-            $(".answer_show",$(this).parent().parent()).show();
+            // 显示单个问题的答案
+            $("#show_body").on("click", ".item_showAnswer", function () {
+                $(".answer_show", $(this).parent().parent()).show();
+            })
+
+
+            // 隐藏单个问题的答案
+            $("#show_body").on("click", ".item_hideAnswer", function () {
+                $(".answer_show", $(this).parent().parent()).hide();
+            })
+
+            $(window).scroll(function () {
+                //为了保证兼容性，这里取两个值，哪个有值取哪一个
+                //scrollTop就是触发滚轮事件时滚轮的高度
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                if (scrollTop > 50) {
+                    $("#right_btnGroup").show();
+                } else {
+                    $("#right_btnGroup").hide();
+                }
+            })
+
+            // 跳转到页面顶部
+            $("#go_top").click(function () {
+                $("html,body").animate({ scrollTop: 0 }, 800);//点击go to top按钮时，以800的速度回到顶部，这里的800可以根据你的需求修改
+                return false;
+            });
+
+            // 跳转到页面底部
+            $("#go_down").click(function () {
+                $("html,body").animate({ scrollTop: $(document).height()  }, 800);//点击go to top按钮时，以800的速度回到顶部，这里的800可以根据你的需求修改
+                return false;
+            });
+
         })
-
-        $("#show_body").on("click", ".item_hideAnswer", function(){
-            $(".answer_show",$(this).parent().parent()).hide();
-        })
-
-    })
-</script>
+    </script>
 
 
 </body>
+
 </html>
